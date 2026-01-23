@@ -1,4 +1,4 @@
-# 🚲 Bike Rental Sharing Prediction System
+# 🏍️ Bike Rental Sharing Prediction System
 
 A machine learning–based application that predicts bike rental demand using user-provided inputs such as weather conditions and calendar features.  
 The system compares multiple regression models and provides instant predictions through a Streamlit web interface.
