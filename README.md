@@ -10,7 +10,6 @@ The system compares multiple regression models and provides instant predictions 
 Bike rental companies rely on accurate demand prediction to manage bikes efficiently.  
 This project predicts the **number of bike rentals** based on environmental and time-related factors using supervised machine learning models.
 
-The emphasis is on **prediction**, not time-series forecasting.
 
 ---
 
