@@ -19,7 +19,7 @@ The following regression models are implemented and compare
 - Decision Tree Regressor  
 - Random Forest Regressor  
 - Gradient Boosting Regressor
-- XGBBoost Rregressor
+  
 ## 📊 Dataset Information
 
 - Dataset: Bike Sharing Dataset
