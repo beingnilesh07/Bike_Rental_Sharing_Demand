@@ -122,7 +122,7 @@ Run the application using:
 
 streamlit run app.py
 
-# Future Improvements
+## Future Improvements
 
 -   Deep learning models (BERT / Transformers)
 -   Web interface using Flask or Streamlit
