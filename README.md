@@ -1,59 +1,141 @@
 # 🏍️ Bike Rental Sharing Prediction System
+## Project Overview
+This project focuses on predicting the number of bikes that will be
+rented at a given time based on historical data. Bike sharing systems
+generate a large amount of usage data every day. By analyzing this data,
+we can understand the factors that influence bike rentals and build
+predictive models.
 
-A machine learning–based application that predicts bike rental demand using user-provided inputs such as weather conditions and calendar features.  
-The system compares multiple regression models and provides instant predictions through a Streamlit web interface.
+The aim is to use machine learning techniques to estimate future demand
+and help companies manage bike availability more effectively.
 
 ---
-## 🎯 Business Need (Problem Statement)
+## Business Need (Problem Statement)
 The business problem is to ensure a stable supply of rental bikes in urban cities by predicting the demand for bikes. By providing a stable supply of rental bikes, the system can enhance mobility comfort for the public and reduce waiting time, leading to greater customer satisfaction and accurately predicting bike demand can help bike sharing companies optimize operations including bike availability, pricing, strategies, and marketing efforts by considering demand Based on various external factors such as weather, season, holiday etc..,
 
 ---
-## 📌 Objective
-To analyze historical bike rental data and build a predictive model to estimate rental demand based on environmental and seasonal factors.
+## Objective
+-   Analyze historical bike rental data
+-   Identify important factors affecting rental demand
+-   Train a regression model to predict bike rentals
+-   Deploy the model for easy user interaction
+  
+---
+## Dataset
+
+The dataset includes information about bike rentals along with weather
+and seasonal data.
+
+Main features include:
+
+-   Datetime
+-   Season
+-   Holiday
+-   Working day
+-   Weather condition
+-   Temperature
+-   Humidity
+-   Wind speed
+-   Casual users
+-   Registered users
+-   Total rental count
+
+The **target variable** is the total number of bike rentals.
+
+--- 
+
+## Data Preprocessing
+
+Before training the model, the dataset is prepared using the following
+steps:
+
+-   Handling missing values
+-   Converting datetime into useful features (hour, day, month)
+-   Encoding categorical variables
+-   Checking feature distributions
+
+---
+## Exploratory Data Analysis
+
+EDA is performed to understand how different variables influence rental
+demand.
+
+Some analysis includes:
+
+-   Rentals by hour of the day
+-   Seasonal trends
+-   Impact of temperature on demand
+-   Weather condition effects
+-   Correlation heatmaps
+
+These insights help select useful features for the model.
 
 ---
 
-## 🧠 Machine Learning Models
+## Feature Engineering
 
-The following regression models are implemented and compare 
-- Decision Tree Regressor  
-- Random Forest Regressor  
-- Gradient Boosting Regressor
-  
-## 📊 Dataset Information
+Additional features are created from the datetime column, such as:
 
-- Dataset: Bike Sharing Dataset
+-   Hour
+-   Day of the week
+-   Month
 
-#### Key Features:
+These features help capture time‑based patterns in bike rentals.
 
-- Season
-- Weather situation
-- Temperature
-- Humidity
-- Wind speed
-- Working day
-- Holiday
+---
 
-#### Target Variable:
-- Total number of bike rentals(cnt)
+## Machine Learning Models
 
-## 🛠️Technologies Used
+Regression models used for prediction:
 
-- Python
-- Pandas, NumPy
-- Scikit-learn
-- Streamlit
-- Matplotlib, Seaborn
-- Joblib
+-   Linear Regression
+-   Multiple Linear Regression
+-   Decision Tree Regressor
+-   Random Forest Regressor
 
-## 🔎 Approach
-- Understood the business problem of demand fluctuation in bike-sharing systems.
-- Cleaned and prepared raw rental data to ensure accuracy and reliability.
-- Performed detailed EDA to identify key drivers such as temperature, season, holidays, and        working days.
-- Applied feature engineering to enhance predictive performance.
-- Built and compared multiple regression models (Linear Regression, Random Forest).
-- Selected the best model using RMSE and R² evaluation metrics.
-I- nterpreted model outputs to explain which factors most influenced rental demand.
+Tree‑based models such as Random Forest often perform well because they
+capture non‑linear relationships in the data.
 
-## ✅ Conclusion 
-- This project showcases my ability to translate a real-world operational problem into a structured data science solution. I demonstrated end-to-end workflow capability from data preprocessing to model evaluation and applied predictive modeling to generate actionable insights for demand forecasting.
+---
+
+## Model Evaluation
+
+The performance of the regression model is measured using:
+
+-   Mean Absolute Error (MAE)
+-   Mean Squared Error (MSE)
+-   Root Mean Squared Error (RMSE)
+-   R² Score
+
+---
+
+## Deployment using Streamlit
+
+The trained model is deployed using **Streamlit** to create a simple web
+interface.
+
+The Streamlit application allows users to: 1. Enter weather and time
+details 2. Send the input to the trained model 3. Predict the number of
+expected bike rentals 4. Display the predicted demand
+
+Run the application using:
+
+streamlit run app.py
+
+# Future Improvements
+
+-   Deep learning models (BERT / Transformers)
+-   Web interface using Flask or Streamlit
+-   Resume ranking system
+-   Integration with recruitment platforms
+
+---
+
+## Conclusion
+
+This project demonstrates how natural language processing and machine
+learning can be used to automate resume screening. The system helps
+reduce manual effort in recruitment and improves the efficiency of
+identifying suitable candidates.
+
+---
