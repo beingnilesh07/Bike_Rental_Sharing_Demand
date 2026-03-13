@@ -125,10 +125,10 @@ streamlit run app.py
 ## Future Improvements
 
 -   Deep learning models (BERT / Transformers)
--   Web interface using Flask or Streamlit
 -   Resume ranking system
--   Integration with recruitment platforms
-
+-   eal‑time demand prediction
+-   Integration with weather APIs
+-   Cloud deployment
 ---
 
 ## Conclusion
