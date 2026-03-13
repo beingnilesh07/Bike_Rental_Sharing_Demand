@@ -133,9 +133,9 @@ streamlit run app.py
 
 ## Conclusion
 
-This project demonstrates how natural language processing and machine
-learning can be used to automate resume screening. The system helps
-reduce manual effort in recruitment and improves the efficiency of
-identifying suitable candidates.
+This project demonstrates how machine learning can be used to analyze
+historical bike-sharing data and predict future rental demand. Such
+predictions can help companies optimize bike availability, reduce
+shortages, and improve overall service efficiency.
 
 ---
