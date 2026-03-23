@@ -15,10 +15,11 @@ The business problem is to ensure a stable supply of rental bikes in urban citie
 
 ---
 ## Objective
--   Analyze historical bike rental data
--   Identify important factors affecting rental demand
--   Train a regression model to predict bike rentals
--   Deploy the model for easy user interaction
+-  Analyze historical rental data to uncover demand patterns
+- Identify key factors driving bike rental volume
+- Train and compare multiple regression models
+- Apply hyperparameter tuning to maximise accuracy
+- Deploy the best model as an interactive Streamlit web application
   
 ---
 ## Dataset
@@ -27,18 +28,16 @@ The dataset includes information about bike rentals along with weather
 and seasonal data.
 
 Main features include:
-
--   Datetime
--   Season
--   Holiday
--   Working day
--   Weather condition
--   Temperature
--   Humidity
--   Wind speed
--   Casual users
--   Registered users
--   Total rental count
+|`datetime` | Hourly timestamp |
+| `season` | 1=Spring, 2=Summer, 3=Fall, 4=Winter |
+| `holiday` | Whether the day is a public holiday |
+| `workingday` | Whether the day is a working day |
+| `weathersit` | Weather condition (1=Clear → 4=Heavy Rain) |
+| `temp` | Normalised temperature |
+| `humidity` | Relative humidity (%) |
+| `windspeed` | Wind speed |
+| `casual` | Rentals by unregistered users |
+| `registered` | Rentals by registered users |
 
 The **target variable** is the total number of bike rentals.
 
@@ -55,72 +54,63 @@ steps:
 -   Checking feature distributions
 
 ---
+
 ## Exploratory Data Analysis
 
-EDA is performed to understand how different variables influence rental
-demand.
+Key insights uncovered during EDA:
 
-Some analysis includes:
-
--   Rentals by hour of the day
--   Seasonal trends
--   Impact of temperature on demand
--   Weather condition effects
--   Correlation heatmaps
-
-These insights help select useful features for the model.
+- **Peak hours** are 8 AM and 5–6 PM on working days (commute-driven demand)
+- **Summer and Fall** see the highest rental volumes across seasons
+- **Temperature** has a strong positive correlation with rentals
+- **Heavy rain and storms** significantly reduce demand
+- Registered users dominate weekday rentals; casual users peak on weekends
 
 ---
 
 ## Feature Engineering
 
-Additional features are created from the datetime column, such as:
+New features extracted from the `datetime` column:
 
--   Hour
--   Day of the week
--   Month
-
-These features help capture time‑based patterns in bike rentals.
-
----
-
-## Machine Learning Models
-
-Regression models used for prediction:
-
--   Linear Regression
--   Multiple Linear Regression
--   Decision Tree Regressor
--   Random Forest Regressor
-
-Tree‑based models such as Random Forest often perform well because they
-capture non‑linear relationships in the data.
+- `hour` — captures time-of-day demand patterns
+- `day_of_week` — differentiates weekday vs weekend behaviour
+- `month` — captures seasonal trends
+- `is_weekend` — binary flag for weekend days
+- `workingday` — derived from holiday and weekend flags
 
 ---
 
-## Model Evaluation
+## Models & Results
 
-The performance of the regression model is measured using:
+### Before Hyperparameter Tuning
 
--   Mean Absolute Error (MAE)
--   Mean Squared Error (MSE)
--   Root Mean Squared Error (RMSE)
--   R² Score
+| Model | RMSE (Train) | RMSE (Test) | R² Train | R² Test |
+|---|---|---|---|---|
+| Decision Tree Regressor | 43.325 | 46.773 | 89.17% | 86.77% |
+| Random Forest Regressor | 27.737 | 36.407 | 95.56% | 91.98% |
+| Gradient Boosting Regressor | 35.245 | 46.773 | 92.83% | 91.56% |
+
+### After Hyperparameter Tuning (RandomSearchCV)
+
+| Model | MAE (Test) | RMSE (Test) | R² Train | R² Test |
+|---|---|---|---|---|
+| Decision Tree Regressor | 26.237 | 41.808 | 93.63% | 89.43% |
+| Random Forest Regressor | 26.469 | 39.535 | 98.65% | 90.55% |
+| **Gradient Boosting Regressor** | **22.321** | **33.805** | **94.75%** | **93.09%** |
+
+**Gradient Boosting Regressor** was selected as the final deployed model — achieving the lowest Test RMSE of **33.81** and the highest Test R² of **93.09%** after tuning.
 
 ---
 
-## Deployment using Streamlit
+##  Streamlit Web App
 
-The trained model is deployed using **Streamlit** to create a simple web
-interface.
+The trained Gradient Boosting model is deployed via **Streamlit**, allowing users to interactively predict bike demand.
 
-The Streamlit application allows users to: 1. Enter weather and time
-details 2. Send the input to the trained model 3. Predict the number of
-expected bike rentals 4. Display the predicted demand
+**To run locally:**
 
-Run the application using:
-
+```bash
+pip install -r requirements.txt
 streamlit run app.py
+```
 
 ## Future Improvements
 
