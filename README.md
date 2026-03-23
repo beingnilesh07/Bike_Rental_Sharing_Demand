@@ -26,8 +26,8 @@ The business problem is to ensure a stable supply of rental bikes in urban citie
 
 The dataset includes information about bike rentals along with weather
 and seasonal data.
-
-Main features include:
+| Feature | Description |
+|---|---|
 |`datetime` | Hourly timestamp |
 | `season` | 1=Spring, 2=Summer, 3=Fall, 4=Winter |
 | `holiday` | Whether the day is a public holiday |
